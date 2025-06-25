@@ -10,13 +10,16 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { Image } from "react-native";
 import FormularioScreen from "../screens/FormularioScreen";
+import UsuarioScreen from "../screens/UsuarioScreen";
+import DirreccionScreen from "../screens/DirreccionScreen";
+import EncuestaScreen from "../screens/EncuestaScreen";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 function MyStack() {
     return (
-        <Stack.Navigator initialRouteName="Formulario">
+        <Stack.Navigator initialRouteName="Welcome">
 
             <Stack.Screen name="Welcome" component={WelcomeScreen}></Stack.Screen>
             <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
@@ -24,6 +27,7 @@ function MyStack() {
             <Stack.Screen name="Tabs" component={MyTab}></Stack.Screen>
 
             <Stack.Screen name="Formulario" component={FormularioScreen}></Stack.Screen>
+
 
         </Stack.Navigator>
     );
@@ -43,7 +47,21 @@ function MyTab() {
 
             <Tab.Screen name="Login"
                 component={LoginScreen}
-                options={{ tabBarIcon: () => <Image style={{width:50, height:50}} source={require("../assets/images/01.png")} /> }}></Tab.Screen>
+                options={{ tabBarIcon: () => <Image style={{ width: 50, height: 50 }} source={require("../assets/images/01.png")} /> }}></Tab.Screen>
+
+            <Tab.Screen name="Usuario"
+                component={UsuarioScreen}
+            ></Tab.Screen>
+
+            <Tab.Screen name="Direcion"
+                component={DirreccionScreen}
+            ></Tab.Screen>
+
+            <Tab.Screen name="Encuesta"
+                component={EncuestaScreen}
+            ></Tab.Screen>
+
+
 
         </Tab.Navigator>
 

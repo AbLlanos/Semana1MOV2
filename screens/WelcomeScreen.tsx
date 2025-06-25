@@ -8,6 +8,8 @@ export default function WelcomeScreen({navigation}:any) {
 
         <Button title='Ir al login' onPress={()=> navigation.navigate("Login")} ></Button>
 
+        <Text>AbLlanos</Text>
+
     
     </View>
   )
