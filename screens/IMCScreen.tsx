@@ -38,7 +38,7 @@ export default function IMCScreen() {
         <View style={styles.container}>
             <Text >IMCScreen</Text>
 
-            <Text>Ingrese su peso en kg</Text>
+            <Text>Ingrese su peso en kg aaaaaaaaaaaa</Text>
             <TextInput
                 placeholder='peso'
                 onChangeText={(texto) => setPeso(+texto)}

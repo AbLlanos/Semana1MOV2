@@ -98,6 +98,9 @@ export default function CalculadoraScreen() {
 
                 <Button title='+numero1' onPress={() => setnumero1(numero1 + 1)} />
 
+
+                    <Text>im</Text>
+
             </View>
 
             <View style={styles.fila}>

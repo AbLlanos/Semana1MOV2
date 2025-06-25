@@ -8,7 +8,7 @@ export default function LoginScreen({ navigation }: any) {
         <View style={styles.container}>
             <Text style={[{ fontSize: 50 }, styles.txt]}>LoginScreen</Text>
 
-            <TouchableOpacity style={styles.btn} onPress={()=> navigation.navigate("Calculadora")}>
+            <TouchableOpacity style={styles.btn} onPress={()=> navigation.navigate("Tabs")}>
 
                 <View style={styles.fila}>
 
