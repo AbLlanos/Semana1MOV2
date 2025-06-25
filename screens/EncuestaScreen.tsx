@@ -59,6 +59,10 @@ const EncuestaScreen = () => {
                     <RadioButton value="no" />
                     <Text>No</Text>
                 </View>
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                    <RadioButton value="quizas" />
+                    <Text>Quizás</Text>
+                </View>
             </RadioButton.Group>
 
 
