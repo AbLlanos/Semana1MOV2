@@ -6,7 +6,7 @@ const EncuestaScreen = () => {
     const [contacto, setContacto] = useState("");
     const [razon, setRazon] = useState("");
     const [recomendacion, setConfirmacion] = useState('si');
-    const [gusto, setGutso] = useState(false);
+    const [gusto, setGutso] = React.useState('first');
     const [permitirContacto, setPermitirContacto] = useState(false);
 
     function encuestaDatos() {
@@ -25,7 +25,7 @@ const EncuestaScreen = () => {
 
         Alert.alert(
             'Resultados',
-            `¿Recomendarías nuestra app? ${recomendacion} ¿Qué te gustó? ${gusto ? "Sí" : "No"}`
+            `¿Recomendarías nuestra app? ${recomendacion} ¿Qué te gustó? , Acepto perimititr contacto ${permitirContacto ? "Sí" : "No"}`
         );
     }
 
@@ -65,6 +65,19 @@ const EncuestaScreen = () => {
                 </View>
             </RadioButton.Group>
 
+            <View>
+                <RadioButton
+                    value="first"
+                    status={gusto === 'first' ? 'checked' : 'unchecked'}
+                    onPress={() => setGutso('first')}
+                />
+                <RadioButton
+                    value="second"
+                    status={gusto  === 'second' ? 'checked' : 'unchecked'}
+                    onPress={() => setGutso('second')}
+                />
+            </View>
+
 
             <Text>Ingrese la razón de su valoración</Text>
             <TextInput
@@ -73,14 +86,6 @@ const EncuestaScreen = () => {
                 onChangeText={setRazon}
                 value={razon}
             />
-
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <Checkbox
-                    status={gusto ? 'checked' : 'unchecked'}
-                    onPress={() => setGutso(!gusto)}
-                />
-                <Text>Me gustó</Text>
-            </View>
 
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <Switch

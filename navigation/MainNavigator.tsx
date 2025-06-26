@@ -13,6 +13,9 @@ import FormularioScreen from "../screens/FormularioScreen";
 import UsuarioScreen from "../screens/UsuarioScreen";
 import DirreccionScreen from "../screens/DirreccionScreen";
 import EncuestaScreen from "../screens/EncuestaScreen";
+import ListaLocalScreen from "../screens/listas/ListaLocalScreen";
+import ListaExternaScreen from "../screens/listas/ListaExternaScreen";
+
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -60,12 +63,38 @@ function MyTab() {
             <Tab.Screen name="Encuesta"
                 component={EncuestaScreen}
             ></Tab.Screen>
+            
+
+                        <Tab.Screen name="Top"
+                component={MyTop}>
+            </Tab.Screen>
+
+
+
 
 
 
         </Tab.Navigator>
 
     )
+}
+
+
+
+const Top = createBottomTabNavigator()
+
+function MyTop() {
+    return (
+        < Top.Navigator >
+            <Top.Screen name="Local" component={ListaLocalScreen} />
+            <Top.Screen name="Externo" component={ListaExternaScreen} />
+
+        </Top.Navigator >
+
+
+    )
+
+
 }
 
 export default function NavegadorPrincipal() {
