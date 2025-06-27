@@ -12,6 +12,9 @@ const UsuarioScreen = () => {
 
     const [visible, setvisible] = useState(false)
 
+
+    const [datos, setdatos] = useState({ "nombre": "", "apellido": "", "email": "", "telefono": "",password:"" })
+
     function confirmarDatos() {
         if (
             nombre.trim() === "" ||
@@ -35,20 +38,28 @@ const UsuarioScreen = () => {
             return;
         }
 
-        Alert.alert("Felicidads", "Se ha registrado con exito")
+        setdatos({
+            "nombre": nombre,
+            "apellido": apellido,
+            "email": email,
+            "telefono": telefono,
+            "password": password
+        });
+
+        Alert.alert("Felicidads", `Se ha registrado con exito con estos datos`)
     }
 
-    
+
     return (
         <View style={styles.container}>
-            <Text style={styles.titulo}>Registro de Usuario Completo</Text>
+            <Text style={styles.titulo}>1.Registro de Usuario Completo</Text>
 
             <Text style={styles.title}>Ingrese sus datos</Text>
 
             <TextInput
                 placeholder="Ingrese su nombre"
                 style={styles.input}
-                
+
                 onChangeText={(text) => setNombre(text)}
             />
 
@@ -85,10 +96,6 @@ const UsuarioScreen = () => {
                 onChangeText={(text) => setConPassword(text)}
             />
 
-            <View style={{ alignSelf: 'center' }}>
-                <Text>Debe aceptar los terminos y condiciones</Text>
-
-            </View>
 
             <View style={{ alignSelf: 'center' }}>
                 <Switch
@@ -101,16 +108,16 @@ const UsuarioScreen = () => {
             {
                 visible == true ?
                     <View>
-                        <Text style={{ fontSize: 20 , alignSelf: "center",marginBottom:5}} >Usted acpeto los terminos</Text>
+                        <Text style={{ fontSize: 15, alignSelf: "center", marginBottom: 5 }} >Usted acepto los terminos</Text>
                     </View>
                     :
                     <View>
-                        <Text style={{ fontSize: 20 , alignSelf: "center",marginBottom:5}} >Debe aceptar los termino ocn el swith</Text>
+                        <Text style={{ fontSize: 15, alignSelf: "center", marginBottom: 5 }} >Debe aceptar los terminos y condiciones</Text>
                     </View>
             }
 
 
-            <Button title="Confirmar" onPress={() => confirmarDatos()} />
+            <Button title="Guardar usuario" onPress={() => confirmarDatos()} />
         </View>
     );
 };
@@ -125,19 +132,19 @@ const styles = StyleSheet.create({
     input: {
         borderWidth: 1,
         borderColor: '#ccc',
-        marginVertical: 8,
+        marginVertical: 4,
         padding: 10,
         borderRadius: 5,
         backgroundColor: '#fff',
     },
     title: {
-        fontSize: 24,
-        marginBottom: 20,
+        fontSize: 20,
+        marginBottom: 10,
         textAlign: 'center',
     },
     titulo: {
-        fontSize: 40,
-        margin: 10,
+        fontSize: 30,
+        margin: 5,
         color: "#000d38",
 
     }

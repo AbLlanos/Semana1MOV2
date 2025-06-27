@@ -2,153 +2,97 @@ import { Alert, Button, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 
 export default function CalculadoraScreen() {
+  const [numero1, setnumero1] = useState(0)
 
-
-    const [numero1, setnumero1] = useState(0);
-
-    //Otro
-
-    const [numero2, setnumero2] = useState(0);
-
-    //total
-        const [total, settotal] = useState(0);
-
-
-    function sumar2() {
-
-        return (setnumero2(numero2 + 1) )
-    }
-
-
-    //Son argumentos
+    /*Este es un metodo */
     function menos() {
-
-        return (setnumero1(numero1 - 1))
+        setnumero1(numero1 - 1)
     }
+    function sumar() {
+        setnumero1(numero1 + 1)
+    }
+    const [numero2, setnumero2] = useState(0)
 
-    //All lamr no olvidar las lalves
-    function Limpiar(){
+    function limpiar() {
         setnumero1(0)
         setnumero2(0)
     }
 
-
-    ///*****************Use Efecct */
-
-    //El final es lo que detecta al cmabiar de estado
-
     useEffect(() => {
-
-        if (numero1<=-5 ) {
+        if (numero1 <= -5) {
             setnumero1(-5)
-
         }
-
-        if (numero1>=5) {
+        if (numero1 >= 5)
             setnumero1(5)
-        } 
 
-        if (numero2<=-4) {
-            setnumero2(-4)
-            
+        if (numero2 <= -5 || numero2 >= 5) {
+            setnumero2(0)
         }
-
-        if (numero2>=4){
-            setnumero2(4)
-        }
-
         
-    }, [numero1,numero2])
-    
 
 
 
-    //Enviar alertae en la funciton
-    function resultado(){
-        let suma = (numero1+numero2)
-        Alert.alert('Resultado', `El total es ${suma}`,[
+
+    }, [numero1, numero2])
+
+
+
+    function final() {
+        let suma = numero1 + numero2;
+        Alert.alert("Suma", "La suma de los numeros es " + suma, [
             {
-                text:"Borrar",
-                onPress: ()=> setnumero1(0)
+                text: "Borrar",
+                onPress: () => limpiar()
             },
             {
-                text:"Limpiar",
-                onPress: ()=> Limpiar()
+                text: "Continuar"
             }
-
         ])
-        return (settotal(suma));
-        
     }
 
 
 
     return (
-        <View>
-            <Text style={{ fontSize: 50 }}>CalculadoraScreen</Text>
-
+        <View style={styles.container}>
+            <Text style={{ fontSize: 50 }}>Calculadora</Text>
             <View style={styles.fila}>
+                <Button title='Restar -1' onPress={menos} />
+                <Text style={styles.txt}> {numero1} </Text>
 
-                <Button title=''></Button>
-                <Text>{numero1}</Text>
-
-
-                <Button title='---------' onPress={menos} />
-
-
-                <Button title='+numero1' onPress={() => setnumero1(numero1 + 1)} />
-
-
-                    <Text>im</Text>
-
+                <Button title='Sumar +1' onPress={() => setnumero1(numero1 + 1)} />
             </View>
 
             <View style={styles.fila}>
-
-                <Button title=''></Button>
-                <Text>{numero2}</Text>
-                <Button title='--numero2' onPress={() => setnumero2(numero2 - 1)} />
-
-
-                <Button title='+numero2' onPress={() => setnumero2(numero2 + 1)} />
+                <Button title='Restar -1' color={"#6111ac"} onPress={() => setnumero2(numero2 - 1)} />
+                <Text style={styles.txt}> {numero2} </Text>
+                <Button title='Sumar +1' color={"#6111ac"} onPress={() => setnumero2(numero2 + 1)} />
             </View>
-
-            <View style={styles.fila}>
-                <Text>{total}</Text>
-                <Button title='Calcular' onPress={resultado}></Button>
-         
-
-
+            <View>
+                <Button color={"#7a003f"} title='Total' onPress={final} />
             </View>
-
-
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-
     fila: {
-        flexDirection: "column",
-        padding:40,
-        backgroundColor: "#fac400",
-        alignItems:"center",
-        
+        flexDirection: "row",
+        marginBottom:10,
     },
-
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding:20,
+        justifyContent: "center",
+        alignItems: "center"
     },
+    txt: {
+        fontSize: 40,
+        color: "#1147ac",
 
-    linea:{
+    },
+    linea: {
         backgroundColor: "black",
-        margin:1,
-        width:30,
-
+        margin: 1,
+        width: "50%",
+        borderWidth: 1
     }
-
-
 })

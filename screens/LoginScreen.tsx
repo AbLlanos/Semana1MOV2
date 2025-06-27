@@ -8,12 +8,12 @@ export default function LoginScreen({ navigation }: any) {
         <View style={styles.container}>
             <Text style={[{ fontSize: 50 }, styles.txt]}>LoginScreen</Text>
 
-            <TouchableOpacity style={styles.btn} onPress={()=> navigation.navigate("Tabs")}>
+            <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate("Tabs")}>
 
                 <View style={styles.fila}>
 
-                    <Text style={[styles.txt, { fontSize: 15 }]}>Ir a Calculadotra</Text>
-                    <Entypo name="login" size={24} color="black" />
+                    <Text style={[styles.txt, { fontSize: 15 }]}>Ir a Calculadora</Text>
+                    <Entypo style={{ alignSelf: "center" }} name="login" size={30} color="black" />
 
                     <Image style={styles.img} source={require("../assets/images/01.png")}  ></Image>
 
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     //txt de texto
     container: {
         flex: 1,
-        backgroundColor: "#755400",
+        backgroundColor: "#fb7c28",
         alignItems: 'center',
         alignContent: 'center',
         justifyContent: 'center',
@@ -40,26 +40,31 @@ const styles = StyleSheet.create({
 
     txt: {
         color: "white",
+        marginBottom:10,
     },
 
     btn: {
-        width: "30%",
-        height: 100,
+        width: "60%",
+        height: 200,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: "red",
+        alignContent: "center",
+        backgroundColor: "#800000",
         padding: 10,
+        borderRadius: 20,
     },
 
     img: {
-        width: "90%",
-        height: 80,
+        width: 50,
+        height: 50,
         objectFit: 'cover',
         resizeMode: 'cover',
+
     },
 
     fila: {
-        flexDirection: 'column'
+        flexDirection: 'column',
+        alignItems: "center",
     }
 
 

@@ -8,7 +8,7 @@ export default function WelcomeScreen({navigation}:any) {
 
         <Button title='Ir al login' onPress={()=> navigation.navigate("Login")} ></Button>
 
-        <Text>AbLlanos</Text>
+        <Text>Abner Salazar Llanos</Text>
 
     
     </View>

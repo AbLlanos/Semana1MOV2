@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Alert, Button, StyleSheet, Text, View } from 'react-native';
-import { TextInput } from 'react-native-gesture-handler';
+import { Switch, TextInput } from 'react-native-gesture-handler';
 
 function DirreccionScreen() {
 
@@ -9,6 +9,9 @@ function DirreccionScreen() {
     const [numero, setNumero] = useState("");
     const [ciudad, setCiudad] = useState("");
     const [referencia, setReferencia] = useState("");
+
+    const [visible, setvisible] = useState(false)
+
 
     function confirmarDatos() {
         if (calle.trim() === "") {
@@ -27,7 +30,7 @@ function DirreccionScreen() {
         }
 
 
-        Alert.alert("Felicidads", "Su dirrecion es valida")
+        Alert.alert("Los datos son correctos", "Su dirrecion es valida")
     }
 
 
@@ -41,35 +44,65 @@ function DirreccionScreen() {
 
             <Text style={styles.title}>Ingrese sus datos</Text>
 
+            <Text style={styles.txt}>Ingrese la calle en la que vive</Text>
             <TextInput
                 placeholder="Ingrese su calle "
                 style={styles.input}
                 onChangeText={(text) => setCalle(text)}
             />
 
+            <Text style={styles.txt}>Ingrese sus numero exterior</Text>
             <TextInput
-                placeholder="Ingrese su numero"
+                placeholder="Ingrese su numero exterior"
                 style={styles.input}
                 keyboardType='numeric'
+                maxLength={10}
                 onChangeText={(text) => setNumero(text)}
             />
 
+            <Text style={styles.txt}>Ingrese el nombre de su ciudad</Text>
             <TextInput
                 placeholder="Ingrese su ciudad"
                 style={styles.input}
                 onChangeText={(text) => setCiudad(text)}
             />
 
+            <Text style={styles.txt}>Ingrese uan referencia  (opcional)</Text>
             <TextInput
-                placeholder="Ingrese su referencia (opciaonl)"
+                placeholder="Ingrese su referencia (opcional)"
                 style={styles.input}
                 onChangeText={(text) => setReferencia(text)}
             />
 
-            <Button title="Confirmar" onPress={() => confirmarDatos()} />
+
+
+            <Text style={{ fontSize: 15, alignSelf: "center", marginBottom: 5 }} >¿La dirrecion es fiscal?</Text>
+            <View style={{ alignSelf: 'center' }}>
+                <Switch
+                    value={visible}
+                    onValueChange={() => setvisible(!visible)}
+                />
+            </View>
+
+            {
+                visible == true ?
+                    <View>
+                        <Text style={{ fontSize: 15, alignSelf: "center", marginBottom: 5 }} >La dirrecion es fiscal</Text>
+                    </View>
+                    :
+                    <View>
+                        <Text style={{ fontSize: 15, alignSelf: "center", marginBottom: 5 }} >La dirrecion no es fiscal</Text>
+                    </View>
+            }
+
+
+
+            <Button title="Validar dirreción" onPress={() => confirmarDatos()} />
+                
         </View>
     );
 };
+
 
 
 const styles = StyleSheet.create({
@@ -77,26 +110,29 @@ const styles = StyleSheet.create({
         padding: 20,
         flex: 1,
         justifyContent: 'center',
-        backgroundColor: '#0074c7',
+        backgroundColor: '#94fffb',
     },
     input: {
         borderWidth: 1,
         borderColor: '#ccc',
-        marginVertical: 8,
+        marginVertical: 4,
         padding: 10,
         borderRadius: 5,
         backgroundColor: '#fff',
     },
     title: {
-        fontSize: 24,
-        marginBottom: 20,
+        fontSize: 16,
+        marginBottom: 10,
         textAlign: 'center',
     },
     titulo: {
-        fontSize: 40,
-        margin: 10,
-        color: "#1f0004",
+        fontSize: 25,
+        color: "#000d38",
+        marginBottom:10,
 
+    },
+    txt:{
+        fontSize:15,
     }
 });
 

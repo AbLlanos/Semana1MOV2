@@ -35,7 +35,7 @@ const FormularioScreen = () => {
 
     return (
         <View style={(styles.container)}>
-            <Text style={{ fontSize: 60 }}>FormularioScreen</Text>
+            <Text style={{ fontSize:35 }}>Formulario Screen</Text>
 
 
             <TextInput style={styles.input}
@@ -62,7 +62,6 @@ const FormularioScreen = () => {
 
 
             <Divider ></Divider>
-            <Divider></Divider>
 
 
 
@@ -70,15 +69,16 @@ const FormularioScreen = () => {
 
             {
                 visible == true ?
-                    <View>
-                        <Text style={{ fontSize: 40 }} >{datos.usuario}</Text>
-                        <Text style={{ fontSize: 40 }} >{datos.edad}</Text>
+                    <View style={{alignItems:'center'}}>
+                        <Text style={{fontSize:30}}> Ver datos</Text>
+                        <Text style={{ fontSize: 20 }} >{datos.usuario}</Text>
+                        <Text style={{ fontSize: 20 }} >{datos.edad}</Text>
 
                     </View>
                     :
                     <View>
-                        <Text style={{ fontSize: 60, alignSelf: "center" }}>No visiblew</Text>
-                        <ActivityIndicator size={100}></ActivityIndicator>
+                        <Text style={{ fontSize: 20, alignSelf: "center" }}>No visible</Text>
+                        <ActivityIndicator size={50}></ActivityIndicator>
                     </View>
             }
 
@@ -104,8 +104,8 @@ const styles = StyleSheet.create({
     input: {
         width: "90%",
         marginBottom: 30,
-        color: "red",
-        fontSize: 40,
+        fontSize: 20,
+        borderRadius:20,
         backgroundColor: "#f98634",
     },
 
@@ -122,8 +122,8 @@ const styles = StyleSheet.create({
     },
 
     sw: {
-        transform: [{ scaleX: 3 }, { scaleY: 3 }],
-        marginVertical: 10,
+        transform: [{ scaleX: 2 }, { scaleY: 2 }],
+        marginVertical: 2,
     },
 
 

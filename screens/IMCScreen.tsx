@@ -1,66 +1,68 @@
-import { Alert, Button, StyleSheet, Text, TextInput, View } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { View, Text, TextInput, Button, Alert, StyleSheet } from 'react-native';
 
 export default function IMCScreen() {
-
     const [estatura, setEstatura] = useState(0);
     const [peso, setPeso] = useState(0);
     const [imc, setIMC] = useState(0);
 
-
-    //terniario  (condicion) ? si cumple : no cumple;
-
     function calcularIMC() {
 
-        let calculo = peso / (estatura * estatura);
-
-        setIMC(calculo);
-
-        if (calculo < 18.5) {
-            Alert.alert('Resultado', `Peso bajo ${calculo}`);
-        } else if (calculo >= 18.5 && calculo <= 24.99) {
-            Alert.alert('Resultado', `Peso normal ${calculo}`);
-        } else if (calculo >= 25 && calculo <= 29.99) {
-            Alert.alert('Resultado', `Sobrepeso ${calculo}`);
-        } else {
-            Alert.alert('Resultado', `Obesidad ${calculo}`);
+        if (estatura <= 0 || peso <= 0) {
+            Alert.alert('Error', 'Ingrese valor para los 2 campos');
+            return;
         }
 
+        let calculo = peso / (estatura * estatura);
+        let resultado = '';
 
+        if (calculo < 18.5) {
+            resultado = 'Peso bajo';
+        } else if (calculo >= 18.5 && calculo <= 24.99) {
+            resultado = 'Peso normal';
+        } else if (calculo >= 25 && calculo <= 29.99) {
+            resultado = 'Sobrepeso';
+        } else {
+            resultado = 'Obesidad';
+        }
 
-
+        setIMC(calculo);
+        Alert.alert('Resultado', `${resultado}: ${calculo}`);
     }
-
-
-
 
     return (
         <View style={styles.container}>
-            <Text >IMCScreen</Text>
+            <Text style={{ fontSize: 20, marginBottom: 20 }}>IMCScreen</Text>
 
-            <Text>Ingrese su peso en kg aaaaaaaaaaaa</Text>
+            <Text style={styles.txt}>Ingrese su peso en kg</Text>
             <TextInput
-                placeholder='peso'
-                onChangeText={(texto) => setPeso(+texto)}
+                placeholder='Ingrese su peso'
+                keyboardType='numeric'
+                style={styles.inputForm}
+                onChangeText={(texto) => setPeso(parseFloat(texto))}
             />
 
-            <Text>Ingrese su estatura en m</Text>
+            <Text style={styles.txt}>Ingrese su estatura en m</Text>
             <TextInput
-                placeholder='estatura'
-                onChangeText={(texto1) => setEstatura(+texto1)}
+                placeholder='Ingrese su estatura'
+                keyboardType='numeric'
+                style={styles.inputForm}
+                onChangeText={(texto1) => setEstatura(parseFloat(texto1))}
             />
 
-            <Text>EL CALUÑLCULÑO FUE {imc}</Text>
-            <Button title='Calcular IMC' onPress={calcularIMC} />
+            <Text style={(styles.btnFinal,{paddingBottom:10})} >El cálculo del IMC es: {imc}</Text>
+            <Button
 
+                title='Calcular IMC' onPress={calcularIMC} />
+
+            <Text style={styles.btnFinal} ></Text>
 
             {
                 peso / (estatura * estatura) < 18.49
                     ?
                     <Text>Peso insuficiente</Text>
-                    : peso / (estatura * estatura) <= 24.99 ?
+                    :
                     <Text>Obesidad</Text>
-                    : <Text>Juan</Text>
             }
 
 
@@ -76,9 +78,22 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        backgroundColor: "#ff5757",
+        backgroundColor: "#d4d4d4",
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    inputForm: {
+        backgroundColor: "#f5bb8f",
+        borderRadius: 10,
+        width: "50%",
+        textAlign: "center",
+    },
+    txt: {
+        fontSize: 15,
+        marginVertical: 10,
+    },
+    btnFinal: {
+    padding:1,
     }
 
 

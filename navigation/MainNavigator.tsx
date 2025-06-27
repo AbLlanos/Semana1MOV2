@@ -15,6 +15,7 @@ import DirreccionScreen from "../screens/DirreccionScreen";
 import EncuestaScreen from "../screens/EncuestaScreen";
 import ListaLocalScreen from "../screens/listas/ListaLocalScreen";
 import ListaExternaScreen from "../screens/listas/ListaExternaScreen";
+import ListaPeliculas3Screen from "../screens/listas/ListaPeliculas3Screen";
 
 
 const Stack = createStackNavigator();
@@ -88,6 +89,7 @@ function MyTop() {
         < Top.Navigator >
             <Top.Screen name="Local" component={ListaLocalScreen} />
             <Top.Screen name="Externo" component={ListaExternaScreen} />
+            <Top.Screen name="Peliculas" component={ListaPeliculas3Screen} />
 
         </Top.Navigator >
 
